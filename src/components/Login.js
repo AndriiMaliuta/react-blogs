@@ -24,6 +24,7 @@ export default class Login extends Component {
   };
 
   handleLoginCLicked = () => {
+    AuthService.authenticate(this.state.username, this.state.password);
     this.setState((state) => ({
       isLoggedIn: AuthService.isuserLoggedIn(
         this.state.username,

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { authenticate } from '../api/AuthService';
+import AuthService from '../api/AuthService';
 
-// const AuthRoute = () => {
-//     if ()
-// }
+const AuthRoute = (props) => {
+  if (AuthService.isuserLoggedIn()) {
+    return <Route {...props} />;
+  } else return <Redirect to='/' />;
+};
+
+export default AuthRoute;

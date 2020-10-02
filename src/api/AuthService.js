@@ -8,20 +8,37 @@ class AuthService {
       .then((response) => {
         jwt = response.data.jwt;
         console.log(jwt);
-        this.registerSuccesfulLogin(username, password);
-        localStorage.setItem('jwt', jwt);
+        this.registerSuccesfulLogin(username, jwt);
       })
       .catch((error) => console.log(error));
   }
 
-  registerSuccesfulLogin(username, token) {
+  registerSuccesfulLogin(username, jwt) {
     sessionStorage.setItem('username', username);
+    sessionStorage.setItem('jwt', jwt);
   }
 
   isuserLoggedIn() {
     let username = sessionStorage.getItem('username');
     if (username === null) return false;
     return true;
+  }
+
+  createJWTToken(token) {
+    return 'Bearer ' + token;
+  }
+
+  logout() {
+    sessionStorage.removeItem('username');
+  }
+
+  setupAxiosInterceptors(token) {
+    axios.interceptors.request.use((config) => {
+      if (this.isUserLoggedIn()) {
+        config.headers.authorization = token;
+      }
+      return config;
+    });
   }
 }
 export default new AuthService();

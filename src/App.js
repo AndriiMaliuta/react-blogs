@@ -7,6 +7,7 @@ import Blog from './components/Blog';
 import Profile from './components/Profile';
 import Header from './components/Header';
 import Login from './components/Login';
+import AuthRoute from './routes/AuthRoute';
 
 function App() {
   return (
@@ -14,10 +15,10 @@ function App() {
       <div className='App'>
         <Header />
         <Switch>
-          <Route path='/blogs/:id' component={Blog} exact={true} />
-          <Route path='/blogs' component={BlogList} exact={true} />
-          <Route path='/profile' component={Profile} exact={true} />
-          <Route path='/dashboard' component={Dashboard} exact={true} />
+          <AuthRoute path='/blogs/:id' component={Blog} exact={true} />
+          <AuthRoute path='/blogs' component={BlogList} exact={true} />
+          <AuthRoute path='/profile' component={Profile} exact={true} />
+          <AuthRoute path='/dashboard' component={Dashboard} exact={true} />
           <Route path='/' component={Login} exact={true} />
         </Switch>
       </div>
