@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getBlogs } from '../api/BlogApi';
+// import { getBlogs } from '../api/BlogApi';
+import BlogsDataService from '../api/BlogsDataService';
 
 class BlogList extends React.Component {
   constructor(props) {
@@ -9,7 +10,14 @@ class BlogList extends React.Component {
   }
 
   componentDidMount() {
-    this.setState((state) => ({ blogs: getBlogs() }));
+    // this.setState((state) => ({ blogs: getBlogs() }));
+    // console.log(BlogsDataService.getAllBlogs());
+    BlogsDataService.getAllBlogs()
+      .then((response) => {
+        console.log(response.data);
+        this.setState((state) => ({ blogs: response.data }));
+      })
+      .catch((error) => console.log(error));
   }
 
   render() {
