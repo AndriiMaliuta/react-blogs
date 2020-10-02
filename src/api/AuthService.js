@@ -16,9 +16,10 @@ class AuthService {
   registerSuccesfulLogin(username, jwt) {
     sessionStorage.setItem('username', username);
     sessionStorage.setItem('jwt', jwt);
+    this.setupAxiosInterceptors(this.createJWTToken(jwt));
   }
 
-  isuserLoggedIn() {
+  isUserLoggedIn() {
     let username = sessionStorage.getItem('username');
     if (username === null) return false;
     return true;

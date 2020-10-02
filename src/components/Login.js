@@ -26,7 +26,7 @@ export default class Login extends Component {
   handleLoginCLicked = () => {
     AuthService.authenticate(this.state.username, this.state.password);
     this.setState((state) => ({
-      isLoggedIn: AuthService.isuserLoggedIn(
+      isLoggedIn: AuthService.isUserLoggedIn(
         this.state.username,
         this.state.password
       ),
@@ -49,7 +49,7 @@ export default class Login extends Component {
         <input
           onChange={this.handleChange}
           id='password'
-          type='text'
+          type='password'
           name='password'
           placeholder='password'
         />

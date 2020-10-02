@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import AuthService from '../api/AuthService';
 
 const AuthRoute = (props) => {
-  if (AuthService.isuserLoggedIn()) {
+  if (AuthService.isUserLoggedIn()) {
     return <Route {...props} />;
   } else return <Redirect to='/' />;
 };
