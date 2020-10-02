@@ -19,7 +19,6 @@ class Blog extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className='blog'>
         <h3>{this.state.title}</h3>

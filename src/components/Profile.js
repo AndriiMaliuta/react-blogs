@@ -5,6 +5,7 @@ const Profile = () => {
   const [profileData, setProfileData] = useState({});
 
   useEffect(() => {
+    console.log('*** Inside the useEffect');
     setProfileData(getProfileInfo());
   }, []);
 

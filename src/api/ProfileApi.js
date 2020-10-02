@@ -1,8 +1,8 @@
 const profileInfo = {
   id: 1,
-  login: 'petro',
-  firstName: 'Petro',
-  lastName: 'Petrenko',
+  login: 'vasyl',
+  firstName: 'Vasyl',
+  lastName: 'Vasylenko',
 };
 
 const getProfileInfo = () => {
