@@ -10,7 +10,7 @@ class Header extends React.Component {
   handleLogout = () => {
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('jwt');
-    this.props.history.push('/dashboard');
+    // this.props.history.push('/dashboard');
   };
   render() {
     return (

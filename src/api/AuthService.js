@@ -12,7 +12,7 @@ class AuthService {
     // .catch((error) => console.log(error));
   }
 
-  registerSuccesfulLogin(username, jwt) {
+  registerSuccessfulLogin(username, jwt) {
     sessionStorage.setItem('username', username);
     sessionStorage.setItem('jwt', jwt);
     this.setupAxiosInterceptors(this.createJWTToken(jwt));

@@ -8,6 +8,7 @@ export default class Login extends Component {
       username: '',
       password: '',
       isLoggedIn: false,
+      invalidLoginData: false,
     };
   }
   //   handleSubmit(event) {
@@ -26,10 +27,11 @@ export default class Login extends Component {
   handleLoginCLicked = () => {
     AuthService.authenticate(this.state.username, this.state.password)
       .then((response) => {
-        AuthService.registerSuccesfulLogin(
+        AuthService.registerSuccessfulLogin(
           this.state.username,
           response.data.jwt
         );
+
         this.props.history.push('/dashboard');
       })
       .catch((error) => console.log(error));
@@ -38,6 +40,7 @@ export default class Login extends Component {
         this.state.username,
         this.state.password
       ),
+      invalidLoginData: true,
     }));
     console.log('****** before redirection');
   };
@@ -46,7 +49,9 @@ export default class Login extends Component {
     return (
       <div>
         <h2>Login</h2>
-        {this.state.isLoggedIn ? <p>Yes</p> : <p>No</p>}
+        {this.state.invalidLoginData && (
+          <p>Please enter correct Username and Password</p>
+        )}
         {/* <form onSubmit={this.handleSubmit}> */}
         <input
           onChange={this.handleChange}
