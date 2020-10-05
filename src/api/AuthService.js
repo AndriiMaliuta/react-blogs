@@ -2,15 +2,14 @@ import axios from 'axios';
 
 class AuthService {
   authenticate(username, password) {
-    let jwt = '';
-    axios
-      .post('http://localhost:8080/auth', { username, password })
-      .then((response) => {
-        jwt = response.data.jwt;
-        console.log(jwt);
-        this.registerSuccesfulLogin(username, jwt);
-      })
-      .catch((error) => console.log(error));
+    // let jwt = '';
+    return axios.post('http://localhost:8080/auth', { username, password });
+    // .then((response) => {
+    //   jwt = response.data.jwt;
+    //   console.log(jwt);
+    //   this.registerSuccesfulLogin(username, jwt);
+    // })
+    // .catch((error) => console.log(error));
   }
 
   registerSuccesfulLogin(username, jwt) {

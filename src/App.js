@@ -8,6 +8,7 @@ import Profile from './components/Profile';
 import Header from './components/Header';
 import Login from './components/Login';
 import AuthRoute from './routes/AuthRoute';
+import Logout from './components/Logout';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <AuthRoute path='/profile' component={Profile} exact={true} />
           <AuthRoute path='/dashboard' component={Dashboard} exact={true} />
           <Route path='/' component={Login} exact={true} />
+          <Route path='/logout' component={Logout} exact={true} />
         </Switch>
       </div>
     </BrowserRouter>

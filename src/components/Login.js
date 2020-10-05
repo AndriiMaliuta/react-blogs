@@ -24,13 +24,22 @@ export default class Login extends Component {
   };
 
   handleLoginCLicked = () => {
-    AuthService.authenticate(this.state.username, this.state.password);
+    AuthService.authenticate(this.state.username, this.state.password)
+      .then((response) => {
+        AuthService.registerSuccesfulLogin(
+          this.state.username,
+          response.data.jwt
+        );
+        this.props.history.push('/dashboard');
+      })
+      .catch((error) => console.log(error));
     this.setState((state) => ({
       isLoggedIn: AuthService.isUserLoggedIn(
         this.state.username,
         this.state.password
       ),
     }));
+    console.log('****** before redirection');
   };
 
   render() {
